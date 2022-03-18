@@ -11,7 +11,7 @@ it('can validate', function () {
         Captcha::getResponseName() => [
             'required',
             new CaptchaRule(),
-        ]
+        ],
     ]);
 
     expect($validator->fails())->toBeFalse();

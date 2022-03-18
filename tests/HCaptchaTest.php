@@ -46,7 +46,7 @@ it('can give captcha javascript', function ($hl, $expect) {
 ]);
 
 it('can give captcha container', function ($args) {
-    list($theme, $size, $expect) = $args;
+    [$theme, $size, $expect] = $args;
     $container_code = Captcha::getContainer($theme, $size);
 
     expect($container_code)->toBe($expect);
@@ -55,28 +55,28 @@ it('can give captcha container', function ($args) {
         return [
             'light',
             'normal',
-            '<div class="h-captcha" data-sitekey="' . config('captcha.sitekey') . '" data-theme="light" data-size="normal"></div>'
+            '<div class="h-captcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="light" data-size="normal"></div>',
         ];
     },
     function () {
         return [
             'dark',
             'normal',
-            '<div class="h-captcha" data-sitekey="' . config('captcha.sitekey') . '" data-theme="dark" data-size="normal"></div>'
+            '<div class="h-captcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="dark" data-size="normal"></div>',
         ];
     },
     function () {
         return [
             'light',
             'compact',
-            '<div class="h-captcha" data-sitekey="' . config('captcha.sitekey') . '" data-theme="light" data-size="compact"></div>'
+            '<div class="h-captcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="light" data-size="compact"></div>',
         ];
     },
     function () {
         return [
             'dark',
             'compact',
-            '<div class="h-captcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="dark" data-size="compact"></div>'
+            '<div class="h-captcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="dark" data-size="compact"></div>',
         ];
     },
 ]);
