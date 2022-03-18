@@ -20,9 +20,9 @@ it('can give captcha container', function () {
                 ->andReturn('<div></div>');
 
     $rendered_output = <<<HTML
-<div></div>
-<div></div>
-HTML;
+    <div></div>
+    <div></div>
+    HTML;
 
     expect(renderView('captcha_container'))->toBe($rendered_output);
 });

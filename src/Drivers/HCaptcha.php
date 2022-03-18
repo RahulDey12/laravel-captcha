@@ -26,9 +26,9 @@ class HCaptcha implements Captcha
             'response' => $token,
             'secret' => config('captcha.secret'),
             'remoteip' => request()->ip(),
-        ])->collect();
+        ])->json();
 
-        return (bool) $captcha_resp->get('success');
+        return (bool) collect($captcha_resp)->get('success');
     }
 
     /**
