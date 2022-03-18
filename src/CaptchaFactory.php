@@ -3,7 +3,6 @@
 namespace Rahul900day\Captcha;
 
 use Rahul900day\Captcha\Contracts\Captcha;
-use Rahul900day\Captcha\Drivers\FakeCaptcha;
 use Rahul900day\Captcha\Drivers\HCaptcha;
 use Rahul900day\Captcha\Drivers\ReCaptcha;
 use Rahul900day\Captcha\Exceptions\InvalidCaptchaDriverException;
@@ -33,7 +32,7 @@ class CaptchaFactory
      * @return \Rahul900day\Captcha\Contracts\Captcha
      * @throws \Rahul900day\Captcha\Exceptions\InvalidCaptchaDriverException
      */
-    public function make()
+    public function make(): Captcha
     {
         $driver = $this->config['driver'];
 

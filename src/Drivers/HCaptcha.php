@@ -20,7 +20,7 @@ class HCaptcha implements Captcha
      * @param string $token
      * @return bool
      */
-    public function verify(string $token)
+    public function verify(string $token): bool
     {
         $captcha_resp = Http::asForm()->post(self::VERIFY_URL, [
             'response' => $token,
@@ -36,7 +36,7 @@ class HCaptcha implements Captcha
      *
      * @return string
      */
-    public function getResponseName()
+    public function getResponseName(): string
     {
         return 'h-captcha-response';
     }
@@ -47,7 +47,7 @@ class HCaptcha implements Captcha
      * @param null|string $hl
      * @return string
      */
-    public function getJs(string $hl = null)
+    public function getJs(string $hl = null): string
     {
         $hl = $hl ?? config('captcha.locale', 'en');
 
@@ -61,7 +61,7 @@ class HCaptcha implements Captcha
      * @param null|string $size
      * @return string
      */
-    public function getContainer(string $theme = null, string $size = null)
+    public function getContainer(string $theme = null, string $size = null): string
     {
         $site_key = config('captcha.sitekey', '');
         $theme = $theme ?? config('captcha.theme', 'light');

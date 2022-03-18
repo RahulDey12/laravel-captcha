@@ -12,7 +12,7 @@ class FakeCaptcha implements Captcha
      * @param string $token
      * @return bool
      */
-    public function verify(string $token)
+    public function verify(string $token): bool
     {
         return true;
     }
@@ -22,7 +22,7 @@ class FakeCaptcha implements Captcha
      *
      * @return string
      */
-    public function getResponseName()
+    public function getResponseName(): string
     {
         return 'fake-response';
     }
@@ -33,7 +33,7 @@ class FakeCaptcha implements Captcha
      * @param string $hl
      * @return string
      */
-    public function getJs(string $hl)
+    public function getJs(string $hl): string
     {
         return '<script></script>';
     }
