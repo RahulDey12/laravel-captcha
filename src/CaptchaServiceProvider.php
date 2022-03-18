@@ -19,7 +19,7 @@ class CaptchaServiceProvider extends ServiceProvider
             __DIR__.'/../config/captcha.php', 'captcha'
         );
 
-        $this->app->singleton(CaptchaContract::class, function($app) {
+        $this->app->singleton(CaptchaContract::class, function ($app) {
             return (new CaptchaFactory(config('captcha')))->make();
         });
     }
@@ -41,15 +41,15 @@ class CaptchaServiceProvider extends ServiceProvider
     public function registerBladeExtensions()
     {
         Blade::directive('captcha_js', function ($arguments) {
-            list($hl) = explode(',', $arguments);
+            [$hl] = explode(',', $arguments);
 
             return "<?php echo \Rahul900day\Captcha\Facades\Captcha::getJs($hl) ?>";
         });
 
         Blade::directive('captcha_container', function ($arguments) {
-            list($theme, $size) = explode(',', $arguments.',');
+            [$theme, $size] = explode(',', $arguments.',');
 
-            if($arguments === '') {
+            if ($arguments === '') {
                 return "<?php echo \Rahul900day\Captcha\Facades\Captcha::getContainer() ?>";
             }
 

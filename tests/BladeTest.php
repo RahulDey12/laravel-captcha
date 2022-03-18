@@ -10,7 +10,6 @@ it('can give captcha javascript', function () {
                 ->andReturn('<script src="test_captcha.js?hl=en"></script>');
 
     expect(renderView('captcha_js'))->toBe('<script src="test_captcha.js?hl=en"></script>');
-
 });
 
 it('can give captcha container', function () {
@@ -19,7 +18,7 @@ it('can give captcha container', function () {
                 ->withAnyArgs()
                 ->andReturn('<div></div>');
 
-    $rendered_output = <<<HTML
+    $rendered_output = <<<'HTML'
     <div></div>
     <div></div>
     HTML;
