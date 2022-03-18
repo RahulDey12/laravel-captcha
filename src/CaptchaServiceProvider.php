@@ -33,7 +33,7 @@ class CaptchaServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
-        ]);
+        ], 'captcha-config');
 
         $this->registerBladeExtensions();
     }

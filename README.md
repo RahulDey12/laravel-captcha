@@ -9,11 +9,13 @@
     <a href="https://packagist.org/packages/rahul900day/laravel-captcha"><img src="https://poser.pugx.org/rahul900day/laravel-captcha/downloads" alt="Total Downloads"></a>
 </p>
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Laravel Captcha is a wrapper around HCaptcha & Google Recaptcha. It provides very easy to use Facade, Validation Rule 
+and blade directives.
 
 ## Installation
+> **Requires [PHP 7.3+](https://php.net/releases/)**
 
-You can install the package via composer:
+Via [Composer](https://getcomposer.org):
 
 ```bash
 composer require rahul900day/laravel-captcha
@@ -43,9 +45,37 @@ return [
 ];
 ```
 
+## Configuration
+
+To get started with Laravel Captcha add this configuration bellow to your `.env` file.
+
+```dotenv
+CAPTCHA_DRIVER=hCaptcha
+CAPTCHA_SITE_KEY="{Your Site Key}"
+CAPTCHA_SECRET_KEY="{Your Site Secret}"
+```
+### Supported ENV Variables
+| Variable           | Default    | Description                                                                                                                                                                                    |
+|--------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAPTCHA_DRIVER     | `hCaptcha` | Default Captcha driver <br> Supported:`hCaptcha`, `reCaptcha`                                                                                                                                  |
+| CAPTCHA_SITE_KEY   | `''`       | The Site Key. <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                      |
+| CAPTCHA_SECRET_KEY | `''`       | The Site Secret. <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                   |
+| CAPTCHA_LOCALE     | `en`       | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  https://docs.hcaptcha.com/languages <br/> *Recaptcha Supported Codes*: https://developers.google.com/recaptcha/docs/language |
+| CAPTCHA_THEME      | `light`    | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                   |
+| CAPTCHA_SIZE       | `normal`   | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                |
+
+> **Note:** Laravel Captcha Does not support *ReCaptcha V3*
+
 ## Usage
 
 ```php
+use Rahul900day\Captcha\Facades\Captcha;
+use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
+use Illuminate\Support\Facades\Validator;
+
+Validator::make($request, [
+   Captcha::getResponseName() => new CaptchaRule() 
+]);
 
 ```
 
