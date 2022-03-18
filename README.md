@@ -19,23 +19,27 @@ You can install the package via composer:
 composer require rahul900day/laravel-captcha
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag=":package_slug-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag=":package_slug-config"
+php artisan vendor:publish --tag="captcha-config"
 ```
 
 This is the contents of the published config file:
 
 ```php
 return [
+    'driver' => env('CAPTCHA_DRIVER', 'hCaptcha'),
+
+    'sitekey' => env('CAPTCHA_SITE_KEY', ''),
+
+    'secret' => env('CAPTCHA_SECRET_KEY', ''),
+
+    'locale' => env('CAPTCHA_LOCALE', 'en'),
+
+    'theme' => env('CAPTCHA_THEME', 'light'),
+
+    'size' => env('CAPTCHA_SIZE', 'normal'),
 ];
 ```
 
