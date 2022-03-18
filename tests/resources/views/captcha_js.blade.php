@@ -1,0 +1,1 @@
+@captcha_js

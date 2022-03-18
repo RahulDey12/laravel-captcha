@@ -1,0 +1,59 @@
+{
+    "name": "rahul900day/laravel-captcha",
+    "description": "Different types of Captcha implementation for Laravel Application.",
+    "keywords": [
+        "rahul900day",
+        "laravel",
+        "laravel-captcha",
+        "laravel-recaptcha",
+        "laravel-hcaptcha"
+    ],
+    "homepage": "https://github.com/RahulDey12/laravel-captcha",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rahul Dey",
+            "email": "rahul900day@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^8.0",
+        "guzzlehttp/guzzle": "^6.3.1|^7.0.1|^7.2",
+        "illuminate/http": "^7.0|^8.0|^9.0",
+        "illuminate/support": "^7.0|^8.0|^9.0",
+        "illuminate/validation": "^7.0|^8.0|^9.0",
+        "illuminate/view": "^7.0|^8.0|^9.0"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.0",
+        "orchestra/testbench": "^7.0",
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Rahul900day\\Captcha\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Rahul900day\\Captcha\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Rahul900day\\Captcha\\CaptchaServiceProvider"
+            ],
+            "aliases": {
+                "Captcha": "Rahul900day\\Captcha\\Facades\\Captcha"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
