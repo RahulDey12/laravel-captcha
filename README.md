@@ -9,51 +9,37 @@
     <a href="https://packagist.org/packages/rahul900day/laravel-captcha"><img src="https://poser.pugx.org/rahul900day/laravel-captcha/downloads" alt="Total Downloads"></a>
 </p>
 
-Laravel Captcha is a wrapper around HCaptcha & Google Recaptcha. It provides very easy to use Facade, Validation Rule 
-and blade directives.
+Laravel Captcha is a wrapper around HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and blade directives.
 
 ## Installation
 > **Requires [PHP 7.3+](https://php.net/releases/)**
 
-Via [Composer](https://getcomposer.org):
+1. Install via  [Composer](https://getcomposer.org):
 
 ```bash
 composer require rahul900day/laravel-captcha
 ```
 
-You can publish the config file with:
+2. Publish the config file with:
 
 ```bash
 php artisan vendor:publish --tag="captcha-config"
 ```
 
-This is the contents of the published config file:
-
-```php
-return [
-    'driver' => env('CAPTCHA_DRIVER', 'hCaptcha'),
-
-    'sitekey' => env('CAPTCHA_SITE_KEY', ''),
-
-    'secret' => env('CAPTCHA_SECRET_KEY', ''),
-
-    'locale' => env('CAPTCHA_LOCALE', 'en'),
-
-    'theme' => env('CAPTCHA_THEME', 'light'),
-
-    'size' => env('CAPTCHA_SIZE', 'normal'),
-];
-```
-
-## Configuration
-
-To get started with Laravel Captcha add this configuration bellow to your `.env` file.
+3. Add required configuration to `.env` file:
 
 ```dotenv
 CAPTCHA_DRIVER=hCaptcha
 CAPTCHA_SITE_KEY="{Your Site Key}"
 CAPTCHA_SECRET_KEY="{Your Site Secret}"
 ```
+> **Don't know how to get the *Site Key* or *Site Secret* ?** <br>
+> Read **[HCaptcha](https://docs.hcaptcha.com/configuration)** or **[ReCaptcha](https://developers.google.com/recaptcha/docs/display)** Docs.
+
+## Configuration
+Laravel Captcha supports very different customizations like theme, language, size. Just
+add these configurations to your `.env` file to customize.
+
 ### Supported ENV Variables
 | Variable           | Default    | Description                                                                                                                                                                                    |
 |--------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -68,21 +54,79 @@ CAPTCHA_SECRET_KEY="{Your Site Secret}"
 
 ## Usage
 
+### Displaying Captcha
+
+Laravel Captcha Provide two blade directives for importing required javascript and
+displaying the captcha itself.
+
+```blade
+<head>
+    @captcha_js
+</head>
+<body>
+  <form action="" method="post">
+      @captcha_container
+  </form>
+</body>
+```
+#### The `@captcha_js` Directive
+
+The `@captcha_js` directive allows you to inject the javascript for captcha. You can 
+also pass additional language parameter into it.
+
+```blade
+@captcha_js('fr')
+```
+> Read the **[HCaptcha](https://docs.hcaptcha.com/languages)** & **[ReCaptcha](https://developers.google.com/recaptcha/docs/language)** docs to get the full language code list.
+
+#### The `@captcha_container` Directive
+
+The `@captcha_container` directive provides the captcha checkbox for your form. it also accepts
+two parameters `theme` & `size` respectively.
+
+```blade
+@captcha_container('light', 'compact')
+```
+
+### Validation of Captcha
+
+Laravel Captcha provides a very beautiful API to deal with captcha validation. In your
+`Controller` or `FormRequest` you can just add this code to validate the captcha.
+
 ```php
 use Rahul900day\Captcha\Facades\Captcha;
 use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
 use Illuminate\Support\Facades\Validator;
 
 Validator::make($request, [
-   Captcha::getResponseName() => new CaptchaRule() 
+   Captcha::getResponseName() => [
+       'required', 
+        new CaptchaRule(),
+   ],
 ]);
-
 ```
 
 ## Testing
 
-```bash
-composer test
+With Laravel Captcha you can write tests very easily. The `Captcha` facade's `fake` method
+allows you to fake the Captcha Validation for the current request.
+
+```php
+use Rahul900day\Captcha\Facades\Captcha;
+use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
+use Illuminate\Support\Facades\Validator;
+
+Captcha::fake();
+
+// If $request is an actual request or a request array
+$validation = Validator::make($request, [
+   Captcha::getResponseName() => [
+       'required', 
+        new CaptchaRule(),
+   ],
+]);
+
+$this->assertTrue(! $validation->fails()) // This is always going to pass.
 ```
 
 ## Changelog
