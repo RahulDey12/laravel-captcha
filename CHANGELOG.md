@@ -2,7 +2,7 @@
 
 ## 1.0.1 - 2022-03-25
 
-## Changed
+### Changed
 
 - Updated dev dependencies (3e74ae5, 79ade43)
 
