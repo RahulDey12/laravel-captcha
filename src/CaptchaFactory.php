@@ -5,6 +5,7 @@ namespace Rahul900day\Captcha;
 use Rahul900day\Captcha\Contracts\Captcha;
 use Rahul900day\Captcha\Drivers\HCaptcha;
 use Rahul900day\Captcha\Drivers\ReCaptcha;
+use Rahul900day\Captcha\Drivers\TurnstileCaptcha;
 use Rahul900day\Captcha\Exceptions\InvalidCaptchaDriverException;
 
 class CaptchaFactory
@@ -42,6 +43,8 @@ class CaptchaFactory
                 return new HCaptcha();
             case 'reCaptcha':
                 return new ReCaptcha();
+            case 'turnstile':
+                return new TurnstileCaptcha();
             default:
                 throw new InvalidCaptchaDriverException($driver);
         }

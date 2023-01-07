@@ -11,10 +11,10 @@ return [
      | application. By default, we will use HCaptcha driver,
      | but you may specify other drivers provided here.
      |
-     | Supported: "hCaptcha", "reCaptcha"
+     | Supported: "turnstile", "hCaptcha", "reCaptcha"
      |
      */
-    'driver' => env('CAPTCHA_DRIVER', 'hCaptcha'),
+    'driver' => env('CAPTCHA_DRIVER', 'turnstile'),
 
     /*
     |------------------------------------------------------------
@@ -23,10 +23,11 @@ return [
     |
     | The site key is used for showing the captcha in the front
     | end. You will get your site key from your preferred
-    | vendor like "ReCaptcha" or "HCaptcha".
+    | vendor like "ReCaptcha", "HCaptcha", "Turnstile".
     |
     | ReCaptcha Docs: https://developers.google.com/recaptcha/docs/display
     | HCaptcha Docs: https://docs.hcaptcha.com/configuration
+    | Turnstile Docs: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations
     |
     */
     'sitekey' => env('CAPTCHA_SITE_KEY', ''),
@@ -38,10 +39,11 @@ return [
     |
     | The site key is used for validating the captcha responses.
     | You will get you secret key from your preferred vendor
-    | like "ReCaptcha" or "HCaptcha".
+    | like "ReCaptcha", "HCaptcha" or "Turnstile".
     |
     | ReCaptcha Docs: https://developers.google.com/recaptcha/docs/display
     | HCaptcha Docs: https://docs.hcaptcha.com/configuration
+    | Turnstile Docs: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations
     |
     */
     'secret' => env('CAPTCHA_SECRET_KEY', ''),
@@ -57,6 +59,8 @@ return [
     |
     | ReCaptcha Language List: https://developers.google.com/recaptcha/docs/language
     | HCaptcha Language List: https://docs.hcaptcha.com/languages
+    |
+    | [NOTE]: Locale feature not yet supported on Turnstile
     |
     */
     'locale' => env('CAPTCHA_LOCALE', 'en'),

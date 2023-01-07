@@ -9,7 +9,7 @@
     <a href="https://packagist.org/packages/rahul900day/laravel-captcha"><img src="https://poser.pugx.org/rahul900day/laravel-captcha/downloads" alt="Total Downloads"></a>
 </p>
 
-Laravel Captcha is a wrapper around HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and blade directives.
+Laravel Captcha is a wrapper around Turnstile, HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and blade directives.
 
 ## Installation
 > **Requires [PHP 7.3+](https://php.net/releases/)**
@@ -29,26 +29,26 @@ php artisan vendor:publish --tag="captcha-config"
 3. Add required configuration to `.env` file:
 
 ```dotenv
-CAPTCHA_DRIVER=hCaptcha
+CAPTCHA_DRIVER=turnstile
 CAPTCHA_SITE_KEY="{Your Site Key}"
 CAPTCHA_SECRET_KEY="{Your Site Secret}"
 ```
 > **Don't know how to get the *Site Key* or *Site Secret* ?** <br>
-> Read **[HCaptcha](https://docs.hcaptcha.com/configuration)** or **[ReCaptcha](https://developers.google.com/recaptcha/docs/display)** Docs.
+> Read **[Turnstile](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations)** or **[HCaptcha](https://docs.hcaptcha.com/configuration)** or **[ReCaptcha](https://developers.google.com/recaptcha/docs/display)** Docs.
 
 ## Configuration
 Laravel Captcha supports very different customizations like theme, language, size. Just
 add these configurations to your `.env` file to customize.
 
 ### Supported ENV Variables
-| Variable           | Default    | Description                                                                                                                                                                                    |
-|--------------------|------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CAPTCHA_DRIVER     | `hCaptcha` | Default Captcha driver <br> Supported:`hCaptcha`, `reCaptcha`                                                                                                                                  |
-| CAPTCHA_SITE_KEY   | `''`       | The Site Key. <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                      |
-| CAPTCHA_SECRET_KEY | `''`       | The Site Secret. <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                   |
-| CAPTCHA_LOCALE     | `en`       | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  https://docs.hcaptcha.com/languages <br/> *Recaptcha Supported Codes*: https://developers.google.com/recaptcha/docs/language |
-| CAPTCHA_THEME      | `light`    | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                   |
-| CAPTCHA_SIZE       | `normal`   | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                |
+| Variable           | Default     | Description                                                                                                                                                                                                                                                                        |
+|--------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAPTCHA_DRIVER     | `turnstile` | Default Captcha driver <br> Supported:`turnstile`, `hCaptcha`, `reCaptcha`                                                                                                                                                                                                         |
+| CAPTCHA_SITE_KEY   | `''`        | The Site Key. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display    |
+| CAPTCHA_SECRET_KEY | `''`        | The Site Secret. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display |
+| CAPTCHA_LOCALE     | `en`        | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  https://docs.hcaptcha.com/languages <br/> *Recaptcha Supported Codes*: https://developers.google.com/recaptcha/docs/language <br/> <br/> ‼️**Localization not yet supported on Turnstile**‼️                     |
+| CAPTCHA_THEME      | `light`     | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                                                                                                       |
+| CAPTCHA_SIZE       | `normal`    | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                                                                                                    |
 
 > **Note:** Laravel Captcha Does not support *ReCaptcha V3*
 
