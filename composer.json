@@ -19,10 +19,10 @@
     "require": {
         "php": "^7.3|^8.0",
         "guzzlehttp/guzzle": "^6.3.1|^7.0.1",
-        "illuminate/http": "^7.0|^8.0|^9.0",
-        "illuminate/support": "^7.0|^8.0|^9.0",
-        "illuminate/validation": "^7.0|^8.0|^9.0",
-        "illuminate/view": "^7.0|^8.0|^9.0"
+        "illuminate/http": "^7.0|^8.0|^9.0|^10.0",
+        "illuminate/support": "^7.0|^8.0|^9.0|^10.0",
+        "illuminate/validation": "^7.0|^8.0|^9.0|^10.0",
+        "illuminate/view": "^7.0|^8.0|^9.0|^10.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^5.10|^6.0",
