@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.1.0 - 2023-01-07
+
+### Added
+
+- Added support for [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) in #11
+
 ## 1.0.1 - 2022-03-25
 
 ### Changed
