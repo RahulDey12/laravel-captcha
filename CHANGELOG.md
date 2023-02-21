@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.1.1 - 2023-02-21
+
+### Added
+
+- Added Laravel 10 Support in #13
+
 ## 1.1.0 - 2023-01-07
 
 ### Added
