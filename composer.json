@@ -27,9 +27,9 @@
     "require-dev": {
         "nunomaduro/collision": "^5.10|^6.0|^7.0",
         "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
-        "pestphp/pest": "*",
-        "pestphp/pest-plugin-laravel": "*",
-        "phpunit/phpunit": "*"
+        "pestphp/pest": "^1.21",
+        "pestphp/pest-plugin-laravel": "^1.2",
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
