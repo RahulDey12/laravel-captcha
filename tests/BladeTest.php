@@ -34,5 +34,5 @@ function renderView($view, $parameters = [])
         $view = view($view)->with($parameters);
     }
 
-    return trim((string) ($view));
+    return trim((string) $view);
 }
