@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.2.0 - 2023-05-28
+
+### Removed
+
+- Removed laravel 7 support #16
+
 ## 1.1.3 - 2023-05-28
 
 ### Added
