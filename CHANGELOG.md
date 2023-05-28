@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.1.2 - 2023-05-28
+
+### Patched
+
+- Fixed Guzzle Http version for laravel 7
+
 ## 1.1.1 - 2023-02-21
 
 ### Added
