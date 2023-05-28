@@ -1,5 +1,11 @@
 # Release Notes
 
+## 1.1.3 - 2023-05-28
+
+### Added
+
+- Extended collision support for laravel 7 5bbb016
+
 ## 1.1.2 - 2023-05-28
 
 ### Patched
