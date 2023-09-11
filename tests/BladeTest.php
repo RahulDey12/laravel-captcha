@@ -5,18 +5,18 @@ use Rahul900day\Captcha\Facades\Captcha;
 
 it('can give captcha javascript', function () {
     Captcha::shouldReceive('getJs')
-                ->once()
-                ->withNoArgs()
-                ->andReturn('<script src="test_captcha.js?hl=en"></script>');
+        ->once()
+        ->withNoArgs()
+        ->andReturn('<script src="test_captcha.js?hl=en"></script>');
 
     expect(renderView('captcha_js'))->toBe('<script src="test_captcha.js?hl=en"></script>');
 });
 
 it('can give captcha container', function () {
     Captcha::shouldReceive('getContainer')
-                ->twice()
-                ->withAnyArgs()
-                ->andReturn('<div></div>');
+        ->twice()
+        ->withAnyArgs()
+        ->andReturn('<div></div>');
 
     $rendered_output = <<<'HTML'
     <div></div>

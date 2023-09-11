@@ -11,9 +11,9 @@ use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
 
 it('can verify captcha', function () {
     Captcha::shouldReceive('verify')
-                        ->once()
-                        ->with('value')
-                        ->andReturn(true);
+        ->once()
+        ->with('value')
+        ->andReturn(true);
 
     (new CaptchaRule)->passes('test_captcha', 'value');
 });

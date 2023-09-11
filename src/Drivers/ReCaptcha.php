@@ -16,9 +16,6 @@ class ReCaptcha implements Captcha
 
     /**
      * Verify the captcha response.
-     *
-     * @param  string  $token
-     * @return bool
      */
     public function verify(string $token): bool
     {
@@ -33,8 +30,6 @@ class ReCaptcha implements Captcha
 
     /**
      * Returns the name of captcha service input.
-     *
-     * @return string
      */
     public function getResponseName(): string
     {
@@ -43,9 +38,6 @@ class ReCaptcha implements Captcha
 
     /**
      * Get javascript for captcha service.
-     *
-     * @param  null|string  $hl
-     * @return string
      */
     public function getJs(string $hl = null): string
     {
@@ -56,10 +48,6 @@ class ReCaptcha implements Captcha
 
     /**
      * Get captcha checkbox container.
-     *
-     * @param  null|string  $theme
-     * @param  null|string  $size
-     * @return string
      */
     public function getContainer(string $theme = null, string $size = null): string
     {

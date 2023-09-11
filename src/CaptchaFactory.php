@@ -19,8 +19,6 @@ class CaptchaFactory
 
     /**
      * Create a new captcha factory instance.
-     *
-     * @param  array  $config
      */
     public function __construct(array $config)
     {
@@ -30,7 +28,6 @@ class CaptchaFactory
     /**
      * Make a captcha service based on the configuration.
      *
-     * @return \Rahul900day\Captcha\Contracts\Captcha
      *
      * @throws \Rahul900day\Captcha\Exceptions\InvalidCaptchaDriverException
      */

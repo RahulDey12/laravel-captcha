@@ -6,16 +6,11 @@ interface Captcha
 {
     /**
      * Verify the captcha response.
-     *
-     * @param  string  $token
-     * @return bool
      */
     public function verify(string $token): bool;
 
     /**
      * Returns the name of captcha service input.
-     *
-     * @return string
      */
     public function getResponseName(): string;
 
@@ -23,7 +18,6 @@ interface Captcha
      * Get javascript for captcha service.
      *
      * @param  null|string  $hl
-     * @return string
      */
     public function getJs(string $hl): string;
 
@@ -32,7 +26,6 @@ interface Captcha
      *
      * @param  null|string  $theme
      * @param  null|string  $size
-     * @return string
      */
     public function getContainer(string $theme, string $size): string;
 }

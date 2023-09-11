@@ -8,9 +8,6 @@ class FakeCaptcha implements Captcha
 {
     /**
      * Verify the captcha response.
-     *
-     * @param  string  $token
-     * @return bool
      */
     public function verify(string $token): bool
     {
@@ -19,8 +16,6 @@ class FakeCaptcha implements Captcha
 
     /**
      * Returns the name of captcha service input.
-     *
-     * @return string
      */
     public function getResponseName(): string
     {
@@ -29,9 +24,6 @@ class FakeCaptcha implements Captcha
 
     /**
      * Get javascript for captcha service.
-     *
-     * @param  string  $hl
-     * @return string
      */
     public function getJs(string $hl): string
     {
@@ -40,10 +32,6 @@ class FakeCaptcha implements Captcha
 
     /**
      * Get captcha checkbox container.
-     *
-     * @param  string  $theme
-     * @param  string  $size
-     * @return string
      */
     public function getContainer(string $theme = 'light', string $size = 'compact'): string
     {
