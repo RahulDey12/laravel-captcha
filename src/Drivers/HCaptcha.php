@@ -36,6 +36,11 @@ class HCaptcha implements Captcha
         return 'h-captcha-response';
     }
 
+    public function getContainerClassName(): string
+    {
+        return 'h-captcha';
+    }
+
     /**
      * Get javascript for captcha service.
      */

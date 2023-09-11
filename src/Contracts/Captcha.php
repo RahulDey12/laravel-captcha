@@ -15,6 +15,11 @@ interface Captcha
     public function getResponseName(): string;
 
     /**
+     * Returns the name of captcha container class.
+     */
+    public function getContainerClassName(): string;
+
+    /**
      * Get javascript for captcha service.
      *
      * @param  null|string  $hl

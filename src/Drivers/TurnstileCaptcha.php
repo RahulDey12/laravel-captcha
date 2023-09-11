@@ -36,9 +36,11 @@ class TurnstileCaptcha implements Captcha
         return 'cf-turnstile-response';
     }
 
-    /**
-     * Get javascript for captcha service.
-     */
+    public function getContainerClassName(): string
+    {
+        return 'cf-turnstile';
+    }
+
     public function getJs(string $hl = null): string
     {
         // $hl = $hl ?? config('captcha.locale', 'en');
@@ -47,9 +49,6 @@ class TurnstileCaptcha implements Captcha
         return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
     }
 
-    /**
-     * Get captcha checkbox container.
-     */
     public function getContainer(string $theme = null, string $size = null): string
     {
         $site_key = config('captcha.sitekey', '');

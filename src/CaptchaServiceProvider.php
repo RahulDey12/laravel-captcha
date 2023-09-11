@@ -4,7 +4,10 @@ namespace Rahul900day\Captcha;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 use Rahul900day\Captcha\Contracts\Captcha as CaptchaContract;
+use Rahul900day\Captcha\Views\Components\Container;
+use Rahul900day\Captcha\Views\Components\Js;
 
 class CaptchaServiceProvider extends ServiceProvider
 {
@@ -35,25 +38,20 @@ class CaptchaServiceProvider extends ServiceProvider
             __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
         ], 'captcha-config');
 
-        $this->registerBladeExtensions();
+        $this->bootResources();
+        $this->bootBladeComponents();
     }
 
-    public function registerBladeExtensions()
+    protected function bootResources(): void
     {
-        Blade::directive('captcha_js', function ($arguments) {
-            [$hl] = explode(',', $arguments);
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'captcha');
+    }
 
-            return "<?php echo \Rahul900day\Captcha\Facades\Captcha::getJs($hl) ?>";
-        });
-
-        Blade::directive('captcha_container', function ($arguments) {
-            [$theme, $size] = explode(',', $arguments.',');
-
-            if ($arguments === '') {
-                return "<?php echo \Rahul900day\Captcha\Facades\Captcha::getContainer() ?>";
-            }
-
-            return "<?php echo \Rahul900day\Captcha\Facades\Captcha::getContainer($theme, $size) ?>";
+    protected function bootBladeComponents(): void
+    {
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+            $blade->component(Js::class, 'js', 'captcha');
+            $blade->component(Container::class, 'container', 'captcha');
         });
     }
 }

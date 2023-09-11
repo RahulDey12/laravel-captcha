@@ -11,6 +11,7 @@ use Rahul900day\Captcha\Drivers\FakeCaptcha;
  * @method static string getJs(null|string $hl = null)
  * @method static string getContainer(null|string $theme = null, null|string $size = null)
  * @method static string getResponseName()
+ * @method static string getContainerClassName()
  *
  * @see \Rahul900day\Captcha\Contracts\Captcha
  */

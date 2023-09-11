@@ -36,6 +36,11 @@ class ReCaptcha implements Captcha
         return 'g-recaptcha-response';
     }
 
+    public function getContainerClassName(): string
+    {
+        return 'g-recaptcha';
+    }
+
     /**
      * Get javascript for captcha service.
      */
