@@ -44,7 +44,7 @@ class HCaptcha implements Captcha
     /**
      * Get javascript for captcha service.
      */
-    public function getJs(string $hl = null): string
+    public function getJs(?string $hl = null): string
     {
         $hl = $hl ?? config('captcha.locale', 'en');
 
@@ -54,7 +54,7 @@ class HCaptcha implements Captcha
     /**
      * Get captcha checkbox container.
      */
-    public function getContainer(string $theme = null, string $size = null): string
+    public function getContainer(?string $theme, ?string $size): string
     {
         $site_key = config('captcha.sitekey', '');
         $theme = $theme ?? config('captcha.theme', 'light');

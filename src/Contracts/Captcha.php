@@ -21,16 +21,11 @@ interface Captcha
 
     /**
      * Get javascript for captcha service.
-     *
-     * @param  null|string  $hl
      */
-    public function getJs(string $hl): string;
+    public function getJs(?string $hl): string;
 
     /**
      * Get captcha checkbox container.
-     *
-     * @param  null|string  $theme
-     * @param  null|string  $size
      */
-    public function getContainer(string $theme, string $size): string;
+    public function getContainer(?string $theme, ?string $size): string;
 }

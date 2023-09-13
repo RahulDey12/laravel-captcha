@@ -41,7 +41,7 @@ class TurnstileCaptcha implements Captcha
         return 'cf-turnstile';
     }
 
-    public function getJs(string $hl = null): string
+    public function getJs(?string $hl = null): string
     {
         // $hl = $hl ?? config('captcha.locale', 'en');
         // Language is currently not supported to Turnstile
@@ -49,7 +49,7 @@ class TurnstileCaptcha implements Captcha
         return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
     }
 
-    public function getContainer(string $theme = null, string $size = null): string
+    public function getContainer(?string $theme, ?string $size): string
     {
         $site_key = config('captcha.sitekey', '');
         $theme = $theme ?? config('captcha.theme', 'light');

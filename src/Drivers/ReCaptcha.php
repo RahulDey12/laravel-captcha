@@ -44,17 +44,21 @@ class ReCaptcha implements Captcha
     /**
      * Get javascript for captcha service.
      */
-    public function getJs(string $hl = null): string
+    public function getJs(?string $hl = null): string
     {
         $hl = $hl ?? config('captcha.locale', 'en');
 
-        return '<script src="https://www.google.com/recaptcha/api.js?hl='.$hl.'" async defer></script>';
+        return <<<HTML
+            <link rel="preconnect" href="https://www.google.com">
+            <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+            <script src="https://www.google.com/recaptcha/api.js?hl={$hl}" async defer></script>
+        HTML;
     }
 
     /**
      * Get captcha checkbox container.
      */
-    public function getContainer(string $theme = null, string $size = null): string
+    public function getContainer(?string $theme, ?string $size): string
     {
         $site_key = config('captcha.sitekey', '');
         $theme = $theme ?? config('captcha.theme', 'light');

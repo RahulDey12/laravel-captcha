@@ -3,9 +3,12 @@
 namespace Rahul900day\Captcha;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
 use Rahul900day\Captcha\Contracts\Captcha as CaptchaContract;
+use Rahul900day\Captcha\Rules\Captcha;
+use Rahul900day\Captcha\Views\Components\Button;
 use Rahul900day\Captcha\Views\Components\Container;
 use Rahul900day\Captcha\Views\Components\Js;
 
@@ -40,6 +43,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
         $this->bootResources();
         $this->bootBladeComponents();
+        $this->bootValidations();
     }
 
     protected function bootResources(): void
@@ -52,6 +56,12 @@ class CaptchaServiceProvider extends ServiceProvider
         $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
             $blade->component(Js::class, 'js', 'captcha');
             $blade->component(Container::class, 'container', 'captcha');
+            $blade->component(Button::class, 'button', 'captcha');
         });
+    }
+
+    protected function bootValidations(): void
+    {
+        Validator::extend('captcha', Captcha::class.'@passes', Captcha::MESSAGE);
     }
 }
