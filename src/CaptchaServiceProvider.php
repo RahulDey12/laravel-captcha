@@ -2,7 +2,6 @@
 
 namespace Rahul900day\Captcha;
 
-use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
