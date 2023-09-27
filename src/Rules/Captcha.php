@@ -7,7 +7,7 @@ use Rahul900day\Captcha\Facades\Captcha as CaptchaFacade;
 
 class Captcha implements Rule
 {
-    public const MESSAGE = 'The captcha verification failed. Please try again.';
+    public const MESSAGE = 'The captcha verification failed.';
 
     /**
      * Determine if the validation rule passes.
@@ -25,6 +25,6 @@ class Captcha implements Rule
      */
     public function message(): string
     {
-        return self::MESSAGE;
+        return __(self::MESSAGE);
     }
 }

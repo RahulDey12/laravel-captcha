@@ -30,6 +30,11 @@ class Button extends Component
     public $callback;
 
     /**
+     * @var bool
+     */
+    public $has_custom_callback;
+
+    /**
      * @var string
      */
     public $nonce;
@@ -41,6 +46,7 @@ class Button extends Component
         $this->formId = $formId;
         $this->nonce = Str::random(10);
         $this->callback = $callback ?? "onCaptchaSubmit_{$this->nonce}";
+        $this->has_custom_callback = boolval($callback);
     }
 
     public function render(): View

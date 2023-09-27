@@ -6,8 +6,10 @@
     {{ $slot }}
 </button>
 
-<script>
-    function onCaptchaSubmit_{{$nonce}}() {
-        document.querySelector('#{{$formId}}').submit();
-    }
-</script>
+@if(! $attributes->has('data-callback') && ! $has_custom_callback )
+    <script>
+        function onCaptchaSubmit_{{$nonce}}() {
+            document.querySelector('#{{$formId}}').submit();
+        }
+    </script>
+@endif

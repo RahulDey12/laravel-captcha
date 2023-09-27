@@ -41,14 +41,14 @@ Laravel Captcha supports very different customizations like theme, language, siz
 add these configurations to your `.env` file to customize.
 
 ### Supported ENV Variables
-| Variable           | Default     | Description                                                                                                                                                                                                                                                                        |
-|--------------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CAPTCHA_DRIVER     | `turnstile` | Default Captcha driver <br> Supported:`turnstile`, `hCaptcha`, `reCaptcha`                                                                                                                                                                                                         |
-| CAPTCHA_SITE_KEY   | `''`        | The Site Key. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display    |
-| CAPTCHA_SECRET_KEY | `''`        | The Site Secret. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display |
-| CAPTCHA_LOCALE     | `en`        | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  https://docs.hcaptcha.com/languages <br/> *Recaptcha Supported Codes*: https://developers.google.com/recaptcha/docs/language <br/> <br/> ‼️**Localization not yet supported on Turnstile**‼️                     |
-| CAPTCHA_THEME      | `light`     | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                                                                                                       |
-| CAPTCHA_SIZE       | `normal`    | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                                                                                                    |
+| Variable           | Default     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+|--------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| CAPTCHA_DRIVER     | `turnstile` | Default Captcha driver <br> Supported:`turnstile`, `hCaptcha`, `reCaptcha`                                                                                                                                                                                                                                                                                                                                                                                                      |
+| CAPTCHA_SITE_KEY   | `''`        | The Site Key. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                                                                                                                                                                                 |
+| CAPTCHA_SECRET_KEY | `''`        | The Site Secret. <br/> *Turnstile Docs*: https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations <br/> *HCaptcha Docs*: https://docs.hcaptcha.com/configuration <br/> *ReCaptcha Docs*: https://developers.google.com/recaptcha/docs/display                                                                                                                                                                                              |
+| CAPTCHA_LOCALE     | `en`        | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  https://docs.hcaptcha.com/languages <br/> *Recaptcha Supported Codes*: https://developers.google.com/recaptcha/docs/language <br/> <br/> You cannot use default localization with **Turnstile** you need to use it with the captch container <br/> `<x-captcha-container data-language="es" />` <br/> *Turnstile Supported Codes:* https://developers.cloudflare.com/turnstile/reference/supported-languages/ |
+| CAPTCHA_THEME      | `light`     | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| CAPTCHA_SIZE       | `normal`    | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 > **Note:** Laravel Captcha Does not support *ReCaptcha V3*
 
@@ -56,36 +56,37 @@ add these configurations to your `.env` file to customize.
 
 ### Displaying Captcha
 
-Laravel Captcha Provide two blade directives for importing required javascript and
-displaying the captcha itself.
+Laravel Captcha Provides laravel components to working with the captcha
 
 ```blade
 <head>
-    @captcha_js
+    <x-captcha-js />
 </head>
 <body>
   <form action="" method="post">
-      @captcha_container
+      <x-captcha-container />
   </form>
 </body>
 ```
-#### The `@captcha_js` Directive
+#### The `<x-captcha-js />` Component
 
-The `@captcha_js` directive allows you to inject the javascript for captcha. You can 
-also pass additional language parameter into it.
+The `<x-captcha-js />` component allows you to inject the javascript for captcha. You can 
+also pass additional language attribute into it.
 
 ```blade
-@captcha_js('fr')
+<x-captcha-js lang="fr" />
 ```
-> Read the **[HCaptcha](https://docs.hcaptcha.com/languages)** & **[ReCaptcha](https://developers.google.com/recaptcha/docs/language)** docs to get the full language code list.
+> Read the **[HCaptcha](https://docs.hcaptcha.com/languages)** & **[ReCaptcha](https://developers.google.com/recaptcha/docs/language)** docs to get the full language code list. 
+> 
+> Turnstile has no localization support with javascript.
 
-#### The `@captcha_container` Directive
+#### The `<x-captcha-container />` Component
 
-The `@captcha_container` directive provides the captcha checkbox for your form. it also accepts
-two parameters `theme` & `size` respectively.
+The `<x-captcha-container />` component provides the captcha checkbox for your form. as it's a laravel component so you
+can add any supported captcha container attribute to it.
 
 ```blade
-@captcha_container('light', 'compact')
+<x-captcha-container data-theme="dark" data-size="compact" data-language="es" />
 ```
 
 ### Validation of Captcha

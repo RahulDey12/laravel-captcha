@@ -27,7 +27,7 @@ class FakeCaptcha implements Captcha
             <script defer async>
                 window.addEventListener('load', () => {
                     const container = document.querySelector('.{$this->getContainerClassName()}');
-                    const input =document.createElement('input');
+                    const input = document.createElement('input');
                     input.setAttribute('type', 'hidden');
                     input.setAttribute('name', '{$this->getResponseName()}')
                     input.setAttribute('value', 'pass')

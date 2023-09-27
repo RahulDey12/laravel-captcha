@@ -61,6 +61,6 @@ class CaptchaServiceProvider extends ServiceProvider
 
     protected function bootValidations(): void
     {
-        Validator::extend('captcha', Captcha::class.'@passes', Captcha::MESSAGE);
+        Validator::extend('captcha', Captcha::class.'@passes', __(Captcha::MESSAGE));
     }
 }
