@@ -25,7 +25,7 @@ class CaptchaServiceProvider extends ServiceProvider
         );
 
         $this->app->singleton(CaptchaContract::class, function ($app) {
-            return (new CaptchaFactory(config('captcha')))->make();
+            return new CaptchaManager($app);
         });
     }
 

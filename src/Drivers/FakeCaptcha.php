@@ -31,7 +31,7 @@ class FakeCaptcha implements Captcha
                     input.setAttribute('type', 'hidden');
                     input.setAttribute('name', '{$this->getResponseName()}')
                     input.setAttribute('value', 'pass')
-                    container.appendChild(input)
+                    container.parentElement.appendChild(input)
                 })
             </script>
         HTML;
