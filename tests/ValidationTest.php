@@ -16,3 +16,16 @@ it('can validate', function () {
 
     expect($validator->fails())->toBeFalse();
 });
+
+it('can validate with alias', function () {
+    Captcha::fake();
+
+    $validator = Validator::make([Captcha::getResponseName() => 'test_resp'], [
+        Captcha::getResponseName() => [
+            'required',
+            'captcha',
+        ],
+    ]);
+
+    expect($validator->fails())->toBeFalse();
+});

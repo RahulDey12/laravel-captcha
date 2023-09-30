@@ -5,29 +5,18 @@ declare(strict_types=1);
 namespace Rahul900day\Captcha\Views\Components;
 
 use Illuminate\View\Component;
+use Illuminate\View\View;
 use Rahul900day\Captcha\Facades\Captcha;
 
 class Container extends Component
 {
-    /**
-     * @var string
-     */
-    public $containerClass;
+    public string $containerClass;
 
-    /**
-     * @var string
-     */
-    public $sitekey;
+    public string $sitekey;
 
-    /**
-     * @var string|null
-     */
-    public $theme;
+    public ?string $theme;
 
-    /**
-     * @var string|null
-     */
-    public $size;
+    public ?string $size;
 
     public function __construct(string $theme = null, string $size = null)
     {
@@ -37,7 +26,7 @@ class Container extends Component
         $this->containerClass = Captcha::getContainerClassName();
     }
 
-    public function render()
+    public function render(): View
     {
         return view('captcha::components.container');
     }

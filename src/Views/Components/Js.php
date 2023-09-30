@@ -9,10 +9,7 @@ use Rahul900day\Captcha\Facades\Captcha;
 
 class Js extends Component
 {
-    /**
-     * @var string|null
-     */
-    public $lang;
+    public ?string $lang;
 
     public function __construct(?string $lang = null)
     {

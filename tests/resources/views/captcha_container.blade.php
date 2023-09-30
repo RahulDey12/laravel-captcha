@@ -1,3 +1,3 @@
-@captcha_container
+<x-captcha-container />
 
-@captcha_container('dark', 'compact')
+<x-captcha-container theme="dark" size="compact" id="test" />

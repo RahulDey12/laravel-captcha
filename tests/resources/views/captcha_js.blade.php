@@ -1,1 +1,1 @@
-@captcha_js
+<x-captcha-js lang="es" />
