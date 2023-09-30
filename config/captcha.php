@@ -11,7 +11,7 @@ return [
      | application. By default, we will use HCaptcha driver,
      | but you may specify other drivers provided here.
      |
-     | Supported: "turnstile", "hCaptcha", "reCaptcha"
+     | Supported: "turnstile", "h-captcha", "re-captcha"
      |
      */
     'driver' => env('CAPTCHA_DRIVER', 'turnstile'),
@@ -60,7 +60,7 @@ return [
     | ReCaptcha Language List: https://developers.google.com/recaptcha/docs/language
     | HCaptcha Language List: https://docs.hcaptcha.com/languages
     |
-    | [NOTE]: Locale feature not yet supported on Turnstile
+    | [NOTE]: Locale feature supported on Turnstile via <captcha-container /> component.
     |
     */
     'locale' => env('CAPTCHA_LOCALE', 'en'),

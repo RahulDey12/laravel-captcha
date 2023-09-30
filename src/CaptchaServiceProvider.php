@@ -18,7 +18,7 @@ class CaptchaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/captcha.php', 'captcha'
@@ -34,7 +34,7 @@ class CaptchaServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
