@@ -21,7 +21,7 @@ class CaptchaServiceProvider extends ServiceProvider
             __DIR__.'/../config/captcha.php', 'captcha'
         );
 
-        $this->app->singleton(CaptchaContract::class, fn($app): CaptchaManager => new CaptchaManager($app));
+        $this->app->singleton(CaptchaContract::class, fn ($app): CaptchaManager => new CaptchaManager($app));
 
         $this->app->alias(CaptchaContract::class, 'captcha');
     }
@@ -55,7 +55,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
     protected function bootPublishing(): void
     {
-        if($this->app->runningInConsole()) {
+        if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
             ], 'captcha-config');
