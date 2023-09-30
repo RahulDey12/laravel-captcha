@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Drivers;
 
 use Illuminate\Support\Facades\Http;
@@ -12,7 +14,7 @@ class TurnstileCaptcha implements Captcha
      *
      * @var string
      */
-    const VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+    public const VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
     /**
      * Verify the captcha response.
@@ -52,8 +54,8 @@ class TurnstileCaptcha implements Captcha
     public function getContainer(?string $theme, ?string $size): string
     {
         $site_key = config('captcha.sitekey', '');
-        $theme = $theme ?? config('captcha.theme', 'light');
-        $size = $size ?? config('captcha.size', 'normal');
+        $theme ??= config('captcha.theme', 'light');
+        $size ??= config('captcha.size', 'normal');
 
         return '<div class="cf-turnstile" data-sitekey="'.$site_key.'" data-theme="'.$theme.'" data-size="'.$size.'"></div>';
     }

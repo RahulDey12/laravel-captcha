@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Drivers;
 
 use Illuminate\Support\Facades\Http;
@@ -12,7 +14,7 @@ class ReCaptcha implements Captcha
      *
      * @var string
      */
-    const VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
+    public const VERIFY_URL = 'https://www.google.com/recaptcha/api/siteverify';
 
     /**
      * Verify the captcha response.
@@ -46,7 +48,7 @@ class ReCaptcha implements Captcha
      */
     public function getJs(?string $hl = null): string
     {
-        $hl = $hl ?? config('captcha.locale', 'en');
+        $hl ??= config('captcha.locale', 'en');
 
         return <<<HTML
             <link rel="preconnect" href="https://www.google.com">
@@ -61,8 +63,8 @@ class ReCaptcha implements Captcha
     public function getContainer(?string $theme, ?string $size): string
     {
         $site_key = config('captcha.sitekey', '');
-        $theme = $theme ?? config('captcha.theme', 'light');
-        $size = $size ?? config('captcha.size', 'normal');
+        $theme ??= config('captcha.theme', 'light');
+        $size ??= config('captcha.size', 'normal');
 
         return '<div class="g-recaptcha" data-sitekey="'.$site_key.'" data-theme="'.$theme.'" data-size="'.$size.'"></div>';
     }

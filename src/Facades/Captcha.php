@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Facades;
 
 use Illuminate\Support\Facades\Facade;
@@ -27,10 +29,8 @@ class Captcha extends Facade
 
     /**
      * Register a fake captcha service in request.
-     *
-     * @return void
      */
-    public static function fake()
+    public static function fake(): void
     {
         self::swap(new FakeCaptcha());
     }

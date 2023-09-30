@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Rules;
 
 use Illuminate\Contracts\Validation\Rule;

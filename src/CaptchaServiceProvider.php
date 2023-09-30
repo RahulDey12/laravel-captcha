@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha;
 
 use Illuminate\Support\Facades\Validator;
@@ -13,36 +15,23 @@ use Rahul900day\Captcha\Views\Components\Js;
 
 class CaptchaServiceProvider extends ServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
     public function register(): void
     {
         $this->mergeConfigFrom(
             __DIR__.'/../config/captcha.php', 'captcha'
         );
 
-        $this->app->singleton(CaptchaContract::class, function ($app) {
-            return new CaptchaManager($app);
-        });
+        $this->app->singleton(CaptchaContract::class, fn($app): CaptchaManager => new CaptchaManager($app));
+
+        $this->app->alias(CaptchaContract::class, 'captcha');
     }
 
-    /**
-     * Bootstraps any application services.
-     *
-     * @return void
-     */
     public function boot(): void
     {
-        $this->publishes([
-            __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
-        ], 'captcha-config');
-
         $this->bootResources();
         $this->bootBladeComponents();
         $this->bootValidations();
+        $this->bootPublishing();
     }
 
     protected function bootResources(): void
@@ -52,7 +41,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
     protected function bootBladeComponents(): void
     {
-        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade): void {
             $blade->component(Js::class, 'js', 'captcha');
             $blade->component(Container::class, 'container', 'captcha');
             $blade->component(Button::class, 'button', 'captcha');
@@ -62,5 +51,14 @@ class CaptchaServiceProvider extends ServiceProvider
     protected function bootValidations(): void
     {
         Validator::extend('captcha', Captcha::class.'@passes', __(Captcha::MESSAGE));
+    }
+
+    protected function bootPublishing(): void
+    {
+        if($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/captcha.php' => config_path('captcha.php'),
+            ], 'captcha-config');
+        }
     }
 }

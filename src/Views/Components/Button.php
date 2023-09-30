@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Views\Components;
 
 use Illuminate\Support\Str;
@@ -9,44 +11,23 @@ use Rahul900day\Captcha\Facades\Captcha;
 
 class Button extends Component
 {
-    /**
-     * @var string
-     */
-    public $containerClass;
+    public string $containerClass;
 
-    /**
-     * @var string
-     */
-    public $sitekey;
+    public string $sitekey;
 
-    /**
-     * @var string
-     */
-    public $formId;
+    public string $callback;
 
-    /**
-     * @var string
-     */
-    public $callback;
+    public bool $has_custom_callback;
 
-    /**
-     * @var bool
-     */
-    public $has_custom_callback;
+    public string $nonce;
 
-    /**
-     * @var string
-     */
-    public $nonce;
-
-    public function __construct(string $formId, string $callback = null)
+    public function __construct(public string $formId, string $callback = null)
     {
         $this->sitekey = config('captcha.sitekey', '');
         $this->containerClass = Captcha::getContainerClassName();
-        $this->formId = $formId;
         $this->nonce = Str::random(10);
         $this->callback = $callback ?? "onCaptchaSubmit_{$this->nonce}";
-        $this->has_custom_callback = boolval($callback);
+        $this->has_custom_callback = (bool) $callback;
     }
 
     public function render(): View

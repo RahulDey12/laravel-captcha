@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Rahul900day\Captcha\Drivers;
 
 use Rahul900day\Captcha\Contracts\Captcha;
