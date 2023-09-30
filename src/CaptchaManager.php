@@ -2,15 +2,11 @@
 
 namespace Rahul900day\Captcha;
 
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Manager;
-use Illuminate\Support\Str;
-use InvalidArgumentException;
 use Rahul900day\Captcha\Contracts\Captcha;
 use Rahul900day\Captcha\Drivers\HCaptcha;
 use Rahul900day\Captcha\Drivers\ReCaptcha;
 use Rahul900day\Captcha\Drivers\TurnstileCaptcha;
-use Rahul900day\Captcha\Exceptions\InvalidCaptchaDriverException;
 
 class CaptchaManager extends Manager
 {
