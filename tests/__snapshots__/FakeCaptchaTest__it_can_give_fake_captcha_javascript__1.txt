@@ -1,0 +1,10 @@
+    <script defer async>
+        window.addEventListener('load', () => {
+            const container = document.querySelector('.fake-captcha-container');
+            const input = document.createElement('input');
+            input.setAttribute('type', 'hidden');
+            input.setAttribute('name', 'fake-response')
+            input.setAttribute('value', 'pass')
+            container.parentElement.appendChild(input)
+        })
+    </script>

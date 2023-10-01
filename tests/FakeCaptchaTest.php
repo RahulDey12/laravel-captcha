@@ -25,5 +25,5 @@ it('can give captcha class', function () {
 it('can give fake captcha javascript', function () {
     $js_code = Captcha::getJs('fr');
 
-    expect($js_code)->toBe('<script></script>');
-})->skip();
+    expect($js_code)->toMatchSnapshot();
+});
