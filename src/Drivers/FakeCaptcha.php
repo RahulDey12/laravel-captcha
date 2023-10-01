@@ -38,9 +38,4 @@ class FakeCaptcha implements Captcha
             </script>
         HTML;
     }
-
-    public function getContainer(?string $theme, ?string $size): string
-    {
-        return "<input name='{$this->getResponseName()}' value='pass' type='hidden'>";
-    }
 }

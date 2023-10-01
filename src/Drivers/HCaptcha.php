@@ -52,16 +52,4 @@ class HCaptcha implements Captcha
 
         return '<script src="https://js.hcaptcha.com/1/api.js?hl='.$hl.'" async defer></script>';
     }
-
-    /**
-     * Get captcha checkbox container.
-     */
-    public function getContainer(?string $theme, ?string $size): string
-    {
-        $site_key = config('captcha.sitekey', '');
-        $theme ??= config('captcha.theme', 'light');
-        $size ??= config('captcha.size', 'normal');
-
-        return '<div class="h-captcha" data-sitekey="'.$site_key.'" data-theme="'.$theme.'" data-size="'.$size.'"></div>';
-    }
 }

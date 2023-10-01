@@ -56,16 +56,4 @@ class ReCaptcha implements Captcha
             <script src="https://www.google.com/recaptcha/api.js?hl={$hl}" async defer></script>
         HTML;
     }
-
-    /**
-     * Get captcha checkbox container.
-     */
-    public function getContainer(?string $theme, ?string $size): string
-    {
-        $site_key = config('captcha.sitekey', '');
-        $theme ??= config('captcha.theme', 'light');
-        $size ??= config('captcha.size', 'normal');
-
-        return '<div class="g-recaptcha" data-sitekey="'.$site_key.'" data-theme="'.$theme.'" data-size="'.$size.'"></div>';
-    }
 }

@@ -13,14 +13,16 @@ it('can give captcha javascript', function () {
 });
 
 it('can give captcha container', function () {
+    config()->set('captcha.sitekey', 'site-key-XXXXXAAAA');
+
     Captcha::shouldReceive('getContainerClassName')
         ->twice()
         ->withAnyArgs()
         ->andReturn('demo-container');
 
     expect(renderView('captcha_container'))
-        ->toContain('<div class="demo-container" data-theme="light" data-size="normal" data-sitekey=""></div>')
-        ->toContain('<div class="demo-container" data-theme="dark" data-size="compact" data-sitekey="" id="test"></div>');
+        ->toContain('<div class="demo-container" data-theme="light" data-size="normal" data-sitekey="site-key-XXXXXAAAA"></div>')
+        ->toContain('<div class="demo-container" data-theme="dark" data-size="compact" data-sitekey="site-key-XXXXXAAAA" id="test"></div>');
 });
 
 function renderView($view, $parameters = [])

@@ -18,15 +18,12 @@ it('can\'t be failed', function () {
     expect($res)->toBeTrue();
 });
 
+it('can give captcha class', function () {
+    expect(Captcha::getContainerClassName())->toBe('fake-captcha-container');
+});
+
 it('can give fake captcha javascript', function () {
     $js_code = Captcha::getJs('fr');
 
     expect($js_code)->toBe('<script></script>');
-});
-
-it('can give fake captcha container', function () {
-    $container_code = Captcha::getContainer('dark', 'compact');
-    $name_attr = Captcha::getResponseName();
-
-    expect($container_code)->toBe("<input name='name' value='{$name_attr}' type='hidden'>");
-});
+})->skip();

@@ -45,18 +45,6 @@ class TurnstileCaptcha implements Captcha
 
     public function getJs(?string $hl = null): string
     {
-        // $hl = $hl ?? config('captcha.locale', 'en');
-        // Language is currently not supported to Turnstile
-
         return '<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>';
-    }
-
-    public function getContainer(?string $theme, ?string $size): string
-    {
-        $site_key = config('captcha.sitekey', '');
-        $theme ??= config('captcha.theme', 'light');
-        $size ??= config('captcha.size', 'normal');
-
-        return '<div class="cf-turnstile" data-sitekey="'.$site_key.'" data-theme="'.$theme.'" data-size="'.$size.'"></div>';
     }
 }

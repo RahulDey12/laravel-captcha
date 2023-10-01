@@ -25,9 +25,4 @@ interface Captcha
      * Get javascript for captcha service.
      */
     public function getJs(?string $hl): string;
-
-    /**
-     * Get captcha checkbox container.
-     */
-    public function getContainer(?string $theme, ?string $size): string;
 }

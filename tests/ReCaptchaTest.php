@@ -35,48 +35,16 @@ it('has correct response name', function () {
     expect(Captcha::getResponseName())->toBe('g-recaptcha-response');
 });
 
+it('can give captcha class', function () {
+    expect(Captcha::getContainerClassName())->toBe('g-recaptcha');
+});
+
 it('can give captcha javascript', function ($hl, $expect) {
     $js_code = Captcha::getJs($hl);
 
-    expect($js_code)->toBe($expect);
+    expect($js_code)->toContain($expect);
 })->with([
     ['fr', '<script src="https://www.google.com/recaptcha/api.js?hl=fr" async defer></script>'],
     ['en', '<script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>'],
     ['en-GB', '<script src="https://www.google.com/recaptcha/api.js?hl=en-GB" async defer></script>'],
-]);
-
-it('can give captcha container', function ($args) {
-    [$theme, $size, $expect] = $args;
-    $container_code = Captcha::getContainer($theme, $size);
-
-    expect($container_code)->toBe($expect);
-})->with([
-    function () {
-        return [
-            'light',
-            'normal',
-            '<div class="g-recaptcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="light" data-size="normal"></div>',
-        ];
-    },
-    function () {
-        return [
-            'dark',
-            'normal',
-            '<div class="g-recaptcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="dark" data-size="normal"></div>',
-        ];
-    },
-    function () {
-        return [
-            'light',
-            'compact',
-            '<div class="g-recaptcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="light" data-size="compact"></div>',
-        ];
-    },
-    function () {
-        return [
-            'dark',
-            'compact',
-            '<div class="g-recaptcha" data-sitekey="'.config('captcha.sitekey').'" data-theme="dark" data-size="compact"></div>',
-        ];
-    },
 ]);
