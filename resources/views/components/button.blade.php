@@ -1,6 +1,6 @@
 <button {{ $attributes->merge([
     'class' => $containerClass,
-    'data-sitekey' => $sitekey,
+    'data-sitekey' => $site_key,
     'data-callback' => $callback
 ]) }}>
     {{ $slot }}

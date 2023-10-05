@@ -13,7 +13,7 @@ class Button extends Component
 {
     public string $containerClass;
 
-    public string $sitekey;
+    public string $site_key;
 
     public string $callback;
 
@@ -23,7 +23,7 @@ class Button extends Component
 
     public function __construct(public string $formId, string $callback = null)
     {
-        $this->sitekey = config('captcha.sitekey', '');
+        $this->site_key = config('captcha.sitekey', '');
         $this->containerClass = Captcha::getContainerClassName();
         $this->nonce = Str::random(10);
         $this->callback = $callback ?? "onCaptchaSubmit_{$this->nonce}";

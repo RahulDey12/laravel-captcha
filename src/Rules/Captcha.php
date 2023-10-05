@@ -9,7 +9,7 @@ use Rahul900day\Captcha\Facades\Captcha as CaptchaFacade;
 
 class Captcha implements Rule
 {
-    public const MESSAGE = 'The captcha verification failed.';
+    public static string $message = 'The captcha verification failed.';
 
     /**
      * Determine if the validation rule passes.
@@ -27,6 +27,6 @@ class Captcha implements Rule
      */
     public function message(): string
     {
-        return __(self::MESSAGE);
+        return __(self::$message);
     }
 }

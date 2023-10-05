@@ -2,5 +2,5 @@
     'class' => $containerClass,
     'data-theme' => $theme,
     'data-size' => $size,
-    'data-sitekey' => $sitekey,
+    'data-sitekey' => $site_key,
 ]) }}></div>

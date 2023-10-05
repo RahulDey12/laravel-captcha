@@ -9,16 +9,8 @@ use Rahul900day\Captcha\Contracts\Captcha;
 
 class HCaptcha implements Captcha
 {
-    /**
-     * The url to verify the captcha response.
-     *
-     * @var string
-     */
     public const VERIFY_URL = 'https://hcaptcha.com/siteverify';
 
-    /**
-     * Verify the captcha response.
-     */
     public function verify(string $token): bool
     {
         $captcha_resp = Http::asForm()->post(self::VERIFY_URL, [
@@ -30,9 +22,6 @@ class HCaptcha implements Captcha
         return (bool) collect($captcha_resp)->get('success');
     }
 
-    /**
-     * Returns the name of captcha service input.
-     */
     public function getResponseName(): string
     {
         return 'h-captcha-response';
@@ -43,9 +32,6 @@ class HCaptcha implements Captcha
         return 'h-captcha';
     }
 
-    /**
-     * Get javascript for captcha service.
-     */
     public function getJs(?string $hl = null): string
     {
         $hl ??= config('captcha.locale', 'en');

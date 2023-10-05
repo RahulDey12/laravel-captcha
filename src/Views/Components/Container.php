@@ -12,7 +12,7 @@ class Container extends Component
 {
     public string $containerClass;
 
-    public string $sitekey;
+    public string $site_key;
 
     public ?string $theme;
 
@@ -20,7 +20,7 @@ class Container extends Component
 
     public function __construct(string $theme = null, string $size = null)
     {
-        $this->sitekey = config('captcha.sitekey', '');
+        $this->site_key = config('captcha.sitekey', '');
         $this->theme = $theme ?? config('captcha.theme', 'light');
         $this->size = $size ?? config('captcha.size', 'normal');
         $this->containerClass = Captcha::getContainerClassName();

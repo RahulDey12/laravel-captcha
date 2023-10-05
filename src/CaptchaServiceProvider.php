@@ -17,9 +17,7 @@ class CaptchaServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        $this->mergeConfigFrom(
-            __DIR__.'/../config/captcha.php', 'captcha'
-        );
+        $this->mergeConfigFrom(__DIR__.'/../config/captcha.php', 'captcha');
 
         $this->app->singleton(CaptchaContract::class, fn ($app): CaptchaManager => new CaptchaManager($app));
 
@@ -50,7 +48,7 @@ class CaptchaServiceProvider extends ServiceProvider
 
     protected function bootValidations(): void
     {
-        Validator::extend('captcha', Captcha::class.'@passes', __(Captcha::MESSAGE));
+        Validator::extend('captcha', Captcha::class.'@passes', __(Captcha::$message));
     }
 
     protected function bootPublishing(): void

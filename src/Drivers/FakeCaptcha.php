@@ -8,9 +8,13 @@ use Rahul900day\Captcha\Contracts\Captcha;
 
 class FakeCaptcha implements Captcha
 {
+    public function __construct(protected bool $verify = true)
+    {
+    }
+
     public function verify(string $token): bool
     {
-        return true;
+        return $this->verify;
     }
 
     public function getResponseName(): string

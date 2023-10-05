@@ -9,16 +9,8 @@ use Rahul900day\Captcha\Contracts\Captcha;
 
 class TurnstileCaptcha implements Captcha
 {
-    /**
-     * The url to verify the captcha response.
-     *
-     * @var string
-     */
     public const VERIFY_URL = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
 
-    /**
-     * Verify the captcha response.
-     */
     public function verify(string $token): bool
     {
         $captcha_resp = Http::asForm()->post(self::VERIFY_URL, [
@@ -30,9 +22,6 @@ class TurnstileCaptcha implements Captcha
         return (bool) collect($captcha_resp)->get('success');
     }
 
-    /**
-     * Returns the name of captcha service input.
-     */
     public function getResponseName(): string
     {
         return 'cf-turnstile-response';

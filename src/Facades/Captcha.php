@@ -11,7 +11,6 @@ use Rahul900day\Captcha\Drivers\FakeCaptcha;
 /**
  * @method static bool verify(string $token)
  * @method static string getJs(null|string $hl = null)
- * @method static string getContainer(null|string $theme = null, null|string $size = null)
  * @method static string getResponseName()
  * @method static string getContainerClassName()
  *
@@ -19,19 +18,13 @@ use Rahul900day\Captcha\Drivers\FakeCaptcha;
  */
 class Captcha extends Facade
 {
-    /**
-     * Get the registered name of the component.
-     */
     protected static function getFacadeAccessor(): string
     {
         return CaptchaContract::class;
     }
 
-    /**
-     * Register a fake captcha service in request.
-     */
-    public static function fake(): void
+    public static function fake(bool $result = true): void
     {
-        self::swap(new FakeCaptcha());
+        self::swap(new FakeCaptcha($result));
     }
 }
