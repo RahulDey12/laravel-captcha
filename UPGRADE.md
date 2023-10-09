@@ -33,7 +33,7 @@ so replace all of your blade directives with components.
 +   <x-captcha-container />
 ```
 
-### Updating captcha driver (Optional Update)
+### Updating captcha driver (optional)
 
 So we have updated our diver resolution technique, so we encourage developers to update there captcha driver names.
 
