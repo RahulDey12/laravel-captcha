@@ -11,7 +11,7 @@ return [
      | application. By default, we will use Turnstile driver,
      | but you may specify other drivers provided here.
      |
-     | Supported: "turnstile", "h-captcha", "re-captcha"
+     | Supported: "turnstile", "hcaptcha", "recaptcha"
      |
      */
     'driver' => env('CAPTCHA_DRIVER', 'turnstile'),

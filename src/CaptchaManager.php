@@ -12,12 +12,12 @@ use Rahul900day\Captcha\Drivers\TurnstileCaptcha;
 
 class CaptchaManager extends Manager
 {
-    protected function createHCaptchaDriver(): Captcha
+    protected function createHcaptchaDriver(): Captcha
     {
         return new HCaptcha();
     }
 
-    protected function createReCaptchaDriver(): Captcha
+    protected function createRecaptchaDriver(): Captcha
     {
         return new ReCaptcha();
     }
