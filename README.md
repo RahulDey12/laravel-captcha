@@ -147,6 +147,10 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Rahul Dey](https://github.com/RahulDey12)
 - [All Contributors](../../contributors)
 
+## Sponsors
+
+- [Pricop Alexandru](https://twitter.com/PricopX)
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
