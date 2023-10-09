@@ -8,7 +8,7 @@ return [
      |------------------------------------------------------------
      |
      | Here you may define the default captcha driver for your
-     | application. By default, we will use HCaptcha driver,
+     | application. By default, we will use Turnstile driver,
      | but you may specify other drivers provided here.
      |
      | Supported: "turnstile", "h-captcha", "re-captcha"
