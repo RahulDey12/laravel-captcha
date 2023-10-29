@@ -1,5 +1,16 @@
 # Release Notes
 
+## 2.0.0 - 2023-10-29
+
+### Released v2.0.0 🎉
+
+- No Captcha
+- Ability to extend
+- Support for custom error message
+- Driver name is not case sensitive anymore
+- Robust validation
+- Limitless Customization & Much More.
+
 ## 1.2.0 - 2023-05-28
 
 ### Removed
