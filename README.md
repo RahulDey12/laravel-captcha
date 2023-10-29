@@ -9,11 +9,11 @@
     <a href="https://packagist.org/packages/rahul900day/laravel-captcha"><img src="https://poser.pugx.org/rahul900day/laravel-captcha/downloads" alt="Total Downloads"></a>
 </p>
 
-Laravel Captcha is a wrapper around Turnstile, HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and blade directives.
+Laravel Captcha is a wrapper around Turnstile, HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and laravel components.
 
-## Installation
->
 > **Requires [PHP 8.0+](https://php.net/releases/)**
+
+## Quick Start
 
 1. Install via  [Composer](https://getcomposer.org):
 
@@ -35,32 +35,7 @@ CAPTCHA_SITE_KEY="{Your Site Key}"
 CAPTCHA_SECRET_KEY="{Your Site Secret}"
 ```
 
-> **Don't know how to get the *Site Key* or *Site Secret* ?** <br>
-> Read **[Turnstile](https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations)** or **[HCaptcha](https://docs.hcaptcha.com/configuration)** or **[ReCaptcha](https://developers.google.com/recaptcha/docs/display)** Docs.
-
-## Configuration
-
-Laravel Captcha supports very different customizations like theme, language, size. Just
-add these configurations to your `.env` file to customize.
-
-### Supported ENV Variables
-
-| Variable           | Default     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-|--------------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CAPTCHA_DRIVER     | `turnstile` | Default Captcha driver <br> Supported:`turnstile`, `hCaptcha`, `reCaptcha`                                                                                                                                                                                                                                                                                                                                                                                                      |
-| CAPTCHA_SITE_KEY   | `''`        | The Site Key. <br/> *Turnstile Docs*: <https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations> <br/> *HCaptcha Docs*: <https://docs.hcaptcha.com/configuration> <br/> *ReCaptcha Docs*: <https://developers.google.com/recaptcha/docs/display>                                                                                                                                                                                                 |
-| CAPTCHA_SECRET_KEY | `''`        | The Site Secret. <br/> *Turnstile Docs*: <https://developers.cloudflare.com/turnstile/get-started/client-side-rendering/#configurations> <br/> *HCaptcha Docs*: <https://docs.hcaptcha.com/configuration> <br/> *ReCaptcha Docs*: <https://developers.google.com/recaptcha/docs/display>                                                                                                                                                                                              |
-| CAPTCHA_LOCALE     | `en`        | The Captcha localization code. <br/> *HCaptcha Supported Codes*:  <https://docs.hcaptcha.com/languages> <br/> *Recaptcha Supported Codes*: <https://developers.google.com/recaptcha/docs/language> <br/> <br/> You cannot use default localization with **Turnstile** you need to use it with the captch container <br/> `<x-captcha-container data-language="es" />` <br/> *Turnstile Supported Codes:* <https://developers.cloudflare.com/turnstile/reference/supported-languages/> |
-| CAPTCHA_THEME      | `light`     | The Captcha checkbox theme. <br/> Supported: `light`, `dark`                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| CAPTCHA_SIZE       | `normal`    | The Captcha checkbox size. <br/> Supported: `normal`, `compact`                                                                                                                                                                                                                                                                                                                                                                                                                 |
-
-> **Note:** Laravel Captcha Does not support *ReCaptcha V3*
-
-## Usage
-
-### Displaying Captcha
-
-Laravel Captcha Provides laravel components to working with the captcha
+4. Display the Captcha
 
 ```blade
 <head>
@@ -73,68 +48,7 @@ Laravel Captcha Provides laravel components to working with the captcha
 </body>
 ```
 
-#### The `<x-captcha-js />` Component
-
-The `<x-captcha-js />` component allows you to inject the javascript for captcha. You can
-also pass additional language attribute into it.
-
-```blade
-<x-captcha-js lang="fr" />
-```
-
-> Read the **[HCaptcha](https://docs.hcaptcha.com/languages)** & **[ReCaptcha](https://developers.google.com/recaptcha/docs/language)** docs to get the full language code list.
->
-> Turnstile has no localization support with javascript.
-
-#### The `<x-captcha-container />` Component
-
-The `<x-captcha-container />` component provides the captcha checkbox for your form. as it's a laravel component so you
-can add any supported captcha container attribute to it.
-
-```blade
-<x-captcha-container data-theme="dark" data-size="compact" data-language="es" />
-```
-
-### Validation of Captcha
-
-Laravel Captcha provides a very beautiful API to deal with captcha validation. In your
-`Controller` or `FormRequest` you can just add this code to validate the captcha.
-
-```php
-use Rahul900day\Captcha\Facades\Captcha;
-use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
-use Illuminate\Support\Facades\Validator;
-
-Validator::make($request, [
-   Captcha::getResponseName() => [
-       'required', 
-        new CaptchaRule(),
-   ],
-]);
-```
-
-## Testing
-
-With Laravel Captcha you can write tests very easily. The `Captcha` facade's `fake` method
-allows you to fake the Captcha Validation for the current request.
-
-```php
-use Rahul900day\Captcha\Facades\Captcha;
-use Rahul900day\Captcha\Rules\Captcha as CaptchaRule;
-use Illuminate\Support\Facades\Validator;
-
-Captcha::fake();
-
-// If $request is an actual request or a request array
-$validation = Validator::make($request, [
-   Captcha::getResponseName() => [
-       'required', 
-        new CaptchaRule(),
-   ],
-]);
-
-$this->assertTrue(! $validation->fails()) // This is always going to pass.
-```
+Please read the full documentation on https://laravel-captcha.rahuldey.dev/
 
 ## Changelog
 
