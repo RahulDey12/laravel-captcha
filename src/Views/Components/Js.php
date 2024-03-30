@@ -9,11 +9,8 @@ use Rahul900day\Captcha\Facades\Captcha;
 
 class Js extends Component
 {
-    public ?string $lang;
-
-    public function __construct(?string $lang = null)
+    public function __construct(public ?string $lang = null)
     {
-        $this->lang = $lang;
     }
 
     public function render(): string
