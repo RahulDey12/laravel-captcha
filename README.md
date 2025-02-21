@@ -70,6 +70,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 ## Sponsors
 
 - [Pricop Alexandru](https://twitter.com/PricopX)
+- [Acolyte Academy](https://acolyte.academy)
 
 ## License
 
