@@ -1,5 +1,11 @@
 # Release Notes
 
+## 4.0.0 - 2025-03-06
+
+### Added
+
+- Laravel 12 Support https://github.com/RahulDey12/laravel-captcha/pull/29
+
 ## 3.0.0 - 2024-03-30
 
 ### Added
