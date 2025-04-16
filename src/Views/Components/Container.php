@@ -18,7 +18,7 @@ class Container extends Component
 
     public ?string $size;
 
-    public function __construct(string $theme = null, string $size = null)
+    public function __construct(?string $theme = null, ?string $size = null)
     {
         $this->site_key = config('captcha.sitekey', '');
         $this->theme = $theme ?? config('captcha.theme', 'light');
