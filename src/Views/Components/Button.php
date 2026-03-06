@@ -21,7 +21,7 @@ class Button extends Component
 
     public string $nonce;
 
-    public function __construct(public string $formId, string $callback = null)
+    public function __construct(public string $formId, ?string $callback = null)
     {
         $this->site_key = config('captcha.sitekey', '');
         $this->containerClass = Captcha::getContainerClassName();
