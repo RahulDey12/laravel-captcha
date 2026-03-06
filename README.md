@@ -11,7 +11,7 @@
 
 Laravel Captcha is a wrapper around Turnstile, HCaptcha & Google Recaptcha. It provides very easy-to-use Facade, Validation Rule, and laravel components.
 
-> **Requires [PHP 8.0+](https://php.net/releases/)**
+> **Requires [PHP 8.2+](https://php.net/releases/)**
 
 ## Quick Start
 
