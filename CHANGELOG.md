@@ -1,5 +1,11 @@
 # Release Notes
 
+## 4.1.0 - 2026-03-06
+
+### Removed
+
+* Dropped PHP 8.1 Support
+
 ## 4.0.0 - 2025-03-06
 
 ### Added
