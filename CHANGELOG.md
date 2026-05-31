@@ -1,5 +1,11 @@
 # Release Notes
 
+## 5.0.0 - 2026-05-31
+
+### Added
+
+- Laravel 13 Support #37
+
 ## 4.1.0 - 2026-03-06
 
 ### Removed
